@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Jornadas | Quíñela</title>
+    <link rel="stylesheet" type="text/css" href="../semantic.min.css">
+    <link rel="stylesheet" href="https://semantic-ui.com/dist/components/icon.css">
+    <link rel="stylesheet" href="https://requenahdz.github.io/firebase/asset/iziToast/iziToast.min.css">
+    <script
+      src="https://code.jquery.com/jquery-3.1.1.min.js"
+      integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+      crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="../semantic.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.8.1/firebase.js"></script>
+    <script src="https://requenahdz.github.io/firebase/js/firebase.js"></script>
+    <script src="https://requenahdz.github.io/firebase/asset/iziToast/iziToast.min.js"></script>
+    <script src="partidos.js"></script>
+    <style media="screen">
+      .logoEquipo{
+        width:15px;
+        height: 15px;
+        background-size: contain;
+        margin-right: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="ui fixed menu inverted"id="navegacion">
+     <div class="ui container">
+       <a href="#" class="header item">
+         Proyecto XXI</a>
+       <a href="#"class="Inicio item">Inicio</a>
+       <a href="#" class="vistaAdministrador item">Clubs</a>
+       <a href="#" class="item">Jornadas</a>
+       <a href="#" class="item">Resultados</a>
+       <a href="#" class="item">Posiciones</a>
+       <div class="usuario item right aligned">
+         <div class="ui pointing dropdown link item">
+           <span id="nombreUsuario" class="text">Tú nombre</span>
+           <i class="dropdown icon"></i>
+           <div class="menu">
+             <div id="cerrarSesion" class="item">
+               Cerrar Sesion
+             </div>
+           </div>
+         </div>
+         <div class="imagen" id="ingresado"></div>
+       </div>
+     </div>
+    </nav>
+
+    <div class="ui container" style="margin-top:90px;">
+      <div class="ui fluid container" style="margin:20px 0px;" id="cabecera">
+        <h2 class="ui header">Quíñela</h2>
+        <div class="ui fluid container" style="display:flex;justify-content:space-between;">
+          <div class="ui breadcrumb">
+            <a href="#" class="section">Inicio</a>
+            <i class="right angle icon divider"></i>
+            <div class="active section">Todas las Jornadas</div>
+          </div>
+          <button type="button" class="ui labeled icon button blue" id="btnNuevaJ">
+            <i class="plus icon"></i>
+            Nueva
+          </button>
+        </div>
+      </div>
+
+      <div class="ui fluid container" style="margin-top:60px">
+        <table class="ui table" style="margin:20px 0px;" id="tabla">
+          <thead style="text-align:center;font-size:13px">
+            <tr><th>JORNADA</th>
+            <th>FECHA INICIO</th>
+            <th>FECHA CIERRE</th>
+            <th>ACCIONES</th>
+          </tr></thead>
+
+          <tbody style="text-align:center;text-transform:uppercase;font-size:13px" id="cuerpoTabla">
+          </tbody>
+
+          <tfoot class="full-width" style="text-align:center;font-size:14px" id="footTabla">
+            <tr>
+              <th colspan="8">No hay resultados por mostrar</th>
+            </tr>
+          </tfoot>
+        </table>
+
+        <div class="ui fluid container" style="display:none;" id="pantallaP">
+          <table class="ui table" style="margin:20px 0px;" id="partidos">
+            <thead style="text-align:center;font-size:13px;">
+              <tr><th>CLUB VISITANTE</th>
+              <th>VS</th>
+              <th>CLUB LOCAL</th>
+              <th>FECHA Y HORA</th>
+              <th>ACCIONES</th>
+            </tr></thead>
+
+            <tbody style="text-align:center;text-transform:uppercase;font-size:13px" id="cuerpoPartidos">
+            </tbody>
+
+            <tfoot class="full-width" style="text-align:center;font-size:13px" id="footPartidosT">
+              <tr>
+                <th colspan="5">No hay partidos por mostrar</th>
+              </tr>
+            </tfoot>
+          </table>
+
+          <button class="ui labeled icon button" id="btnRegresar">
+            <i class="reply icon"></i>
+            Regresar
+          </button>
+        </div>
+      </div>
+
+      <div class="ui modal small" id="modalNew" data-accion="">
+        <div class="header">
+          Nueva jornada
+        </div>
+        <div class="content">
+          <div class="ui compact red message mini">Los campos marcados con *(asteristico) son obligatorios</div>
+          <form class="ui tiny form" action="index.html" method="post" id="formJ">
+
+            <div class="field">
+              <label>Nombre de la jornada <span style="color:red;">*</span></label>
+              <input class="informacion" type="text" name="jornada" id="jornada" placeholder="Escribe el nombre de la jornada">
+            </div>
+            <div class="two fields">
+              <div class="field">
+                <label>Fecha de inicio <span style="color:red;">*</span></label>
+                <input class="informacion" type="date" name="fechainicio" id="fechaInicio" placeholder="Escribe la fecha de inicio">
+              </div>
+              <div class="field">
+                <label>Fecha de cierre <span style="color:red;">*</span></label>
+                <input class="informacion" type="date" name="fechacierre" id="fechaCierre" placeholder="Escribe la fecha de cierre">
+              </div>
+            </div>
+          </form>
+        </div>
+
+        <div class="actions">
+          <div class="ui green labeled icon button" id="btnGuardarJ">
+            <i class="save icon"></i>
+            Guardar
+          </div>
+          <button class="ui labeled icon button negative">
+            <i class="times icon"></i>
+            Cancelar
+          </button>
+        </div>
+      </div>
+
+      <div class="ui basic modal" id="modalBorrar">
+        <div class="ui icon header">
+          <i class="archive icon"></i>
+          Borrar registro
+        </div>
+        <div class="content">
+          <p>Este registro se borrará, ¿está seguro de continuar?</p>
+        </div>
+        <div class="actions">
+          <div class="ui red basic cancel inverted button">
+            <i class="remove icon"></i>
+            No
+          </div>
+          <div class="ui green ok inverted button">
+            <i class="checkmark icon"></i>
+            Yes
+          </div>
+        </div>
+      </div>
+
+      <div class="ui modal small" id="modalRegistrarPartidos">
+        <div class="header">
+          Nuevo partido
+        </div>
+        <div class="content">
+          <div class="ui compact red message mini">Los campos marcados con *(asteristico) son obligatorios</div>
+          <form class="ui tiny form" action="index.html" method="post" id="formRgtr">
+            <div class="two fields">
+              <div class="field">
+                <label>Club visitante <span style="color:red;">*</span></label>
+                <div class="ui selection dropdown">
+                  <input type="hidden" name="dropdownCV" id="dropdownCV">
+                  <i class="dropdown icon"></i>
+                  <div class="default text" style="display:flex;">Club visitante</div>
+                  <div class="menu">
+                  </div>
+                </div>
+              </div>
+
+              <div class="field">
+                <label>Club local <span style="color:red;">*</span></label>
+                <div class="ui selection dropdown">
+                  <input type="hidden" id="dropdownCL" name="dropdownCL">
+                  <i class="dropdown icon"></i>
+                  <div class="default text" style="display:flex;">Club local</div>
+                  <div class="menu">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="field">
+              <label>Fecha del partido <span style="color:red;">*</span></label>
+              <input type="date" name="fechapartido" class="info" id="fechapartido">
+            </div>
+            <div class="field">
+              <label>Hora del partido <span style="color:red;">*</span></label>
+              <input type="time" name="horapartido" class="info" id="horapartido">
+            </div>
+          </form>
+        </div>
+        <div class="actions">
+          <div class="ui green labeled icon button" id="btnGuardarP">
+            <i class="save icon"></i>
+            Guardar
+          </div>
+          <button class="ui labeled icon button negative">
+            <i class="times icon"></i>
+            Cancelar
+          </button>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
