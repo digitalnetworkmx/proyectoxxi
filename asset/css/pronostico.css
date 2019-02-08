@@ -1,0 +1,39 @@
+#navegacion .container div,a{
+ color:white;
+}
+.imagen{
+ width:3.2em;
+ height:3.2em;
+ border-radius: 50%;
+ background-size:contain;
+ background-position: center;
+ margin:auto;
+}
+#ingresado{
+ width:50px;
+ height:50px;
+ background-image:url(http://semantic-ui.com/images/wireframe/image.png);
+ background-position: center;
+ background-size:contain;
+ border-radius:50%;
+ background-repeat:no-repeat;
+}
+
+
+input[type="radio"]:checked{
+  width:20px;
+  height:20px;
+}
+
+  .contenedor{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+  }
+
+
+  th{
+    font-size: 16px;
+
+  }
