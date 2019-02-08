@@ -48,7 +48,7 @@ var Equipos = new function() {
     localStorage.setItem("imagen","");
     window.location.href="login.html";
   }
-  
+
   var initDependencias=function(){
     // localStorage.setItem("nombre","Mario");
     // localStorage.setItem("correo","mario@gmail.com");
@@ -185,7 +185,7 @@ var initTabla = function() {
         tabla+="<td>"+accion+"</td></tr>";
       }
     });
-    $("#Equipostabla tbody").html(tabla);
+    $("#tabla tbody").html(tabla);
     $('.ui.dropdown').dropdown();
   });
 }
@@ -271,9 +271,6 @@ function borrar (componente) {
     });
   }
 
-
-
-
-  $(document).ready(function($) {
+  $(document).ready(function() {
     Equipos.init();
   });
