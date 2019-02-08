@@ -2,9 +2,7 @@ var correo;
 var password;
 var bien;
 
-if (firebase.auth().currentUser) {
-  window.location.href="/proyectoxxi/pronostico.html";
-}
+
 
 $('#iniciar').on('click',function(){
 
@@ -109,4 +107,8 @@ var verificar = function(){
 
     }
   });
+}
+
+if (firebase.auth().currentUser) {
+  window.location.href="/proyectoxxi/pronostico.html";
 }
