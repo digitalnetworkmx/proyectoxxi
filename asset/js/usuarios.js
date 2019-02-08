@@ -418,7 +418,7 @@ var Usuarios =  function() {
         console.log(value);
 
       });
-      $("#tabla tbody").html(tabla);
+      $("#tablaUsuarios tbody").html(tabla);
       var acciones = $(".acciones");
       acciones.click(function(){
         $(".ui.dropdown").dropdown();
