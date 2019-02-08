@@ -37,7 +37,7 @@ var Usuarios =  function() {
     var correo=localStorage.getItem("correo");
     var administrador =localStorage.getItem("tipo");
     var imagen = localStorage.getItem("imagen");
-    if(nombre==""){
+    if(nombre=="" || nombre==null){
       window.location.href="login.html";
     }
     if(administrador=="comun"){
