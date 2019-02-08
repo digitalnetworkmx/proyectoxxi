@@ -25,11 +25,12 @@ var Usuarios =  function() {
   }
 
   function cerrarSesion(){
-    localStorage.setItem("nombre","");
-    localStorage.setItem("correo","");
-    localStorage.setItem("tipo","");
-    localStorage.setItem("imagen","");
-    window.location.href="login.html";
+    // localStorage.setItem("nombre","");
+    // localStorage.setItem("correo","");
+    // localStorage.setItem("tipo","");
+    // localStorage.setItem("imagen","");
+    // window.location.href="login.html";
+    alert("se cerro sesion");
   }
 
   var initDependencias=function(){
