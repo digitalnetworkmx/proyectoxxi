@@ -1,0 +1,212 @@
+<html>
+<head>
+  <script src="https://requenahdz.github.io/firebase/asset/iziToast/init.js"></script>
+  <link rel="stylesheet" href="https://requenahdz.github.io/firebase/asset/iziToast/iziToast.min.css">
+  <script src="https://requenahdz.github.io/firebase/asset/iziToast/iziToast.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script src="semantic/semantic.min.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.8.1/firebase.js"></script>
+  <script src="https://requenahdz.github.io/firebase/js/firebase.js"></script>
+  <script src="usuarios.js"></script>
+  <link rel="stylesheet" type="text/css" href="semantic/semantic.min.css">
+  <meta charset="utf-8">
+  <style>
+  .cabecera{
+    margin-bottom:5em;
+  }
+  #imagen{
+  	height: 300px;
+  	width: 350px;
+  	background-repeat: no-repeat;
+  	background-size: contain;
+  	background-position: center;
+    margin:auto;
+    background-image:url(
+http://semantic-ui.com/images/wireframe/image.png);
+  }
+  #navegacion .container div{
+    color:white;
+  }
+  .imagen{
+    width:3.2em;
+    height:3.2em;
+    border-radius: 50%;
+    background-size:contain;
+    background-position: center;
+    margin:auto;
+  }
+  #ingresado{
+    width:50px;
+    height:50px;
+    background-position: center;
+    background-size:contain;
+    border-radius:50%;
+    background-repeat:no-repeat;
+    background-image:url(http://semantic-ui.com/images/wireframe/image.png);
+  }
+  header{
+    margin-top:7em;
+  }
+  </style>
+</head>
+<body>
+  <nav class="ui fixed menu inverted"id="navegacion">
+    <div class="ui container">
+      <a href="#" class="header item">
+        Proyecto XXI</a>
+      <a href="#"class="Inicio item">Inicio</a>
+      <a href="#" class="vistaAdministrador item">Clubs</a>
+      <a href="#" class="item">Jornadas</a>
+      <a href="#" class="item">Resultados</a>
+      <a href="#" class="item">Posiciones</a>
+      <div class="usuario item right aligned">
+        <div class="ui pointing dropdown link item">
+          <span id="nombreUsuario" class="text">Tu nombre</span>
+          <i class="dropdown icon"></i>
+          <div class="menu">
+            <div id="cerrarSesion" class="item">
+              Cerrar Sesion
+            </div>
+          </div>
+        </div>
+        <div class="imagen" id="ingresado"></div>
+      </div>
+    </div>
+  </nav>
+  <header class="cabecera ui container">
+    <h1 class="ui header">Usuarios</h1>
+    <div class="ui breadcrumb">
+      <a href="#" class="section">Inicio</a>
+      <i class="right angle icon divider"></i>
+      <div class="active section">Usuarios</div>
+    </div>
+    <button id="btnNuevo" class="ui button right floated blue labeled icon">
+      <i class="plus icon"></i>
+      Nuevo
+    </button>
+  </header>
+  <div class="ui modal" id="modal" >
+    <i class="close icon"></i>
+    <div class="header">Nueva Persona</div>
+    <div class="content">
+      <div class="ui red compact message">Los campos marcados con *(asterisco) son obligatorios</div>
+      <form id="form"class="ui form" action="index.html" method="post">
+        <div class=" two fields">
+          <div class="ui two column doubling stackable grid container">
+            <div class="column">
+              <div class="field">
+                <div id="imagen"></div>
+                <input type="file" class="ui button red" id="file">
+              </div>
+            </div>
+            <div class="column">
+              <div class="field required">
+                <label for="">Nombre(s)</label>
+                <input id="nombre" type="text" name="nombre" placeholder="Ingrese sus nombres" maxlenght="20">
+              </div>
+              <br>
+              <div class="two fields">
+                <div class="field required">
+                  <label for="">Apellido Paterno</label>
+                  <input type="text" id="paterno" maxlength="20" placeholder="Ingrese su apellido paterno" name="paterno">
+                </div>
+                <div class="field required">
+                  <label for="">Apellido Materno</label>
+                  <input type="text" id="materno" maxlength="20" name="materno" placeholder="Ingrse el apellido Materno">
+                </div>
+              </div>
+              <div class="field required">
+                <label for="">Correo</label>
+                <input type="email" id="email" name="email" placeholder="Ej. JuanitoComePapas@gmail.com">
+              </div>
+              <br>
+              <div id="contraseñas" class="two fields">
+                <div class="field required">
+                  <label for="">Contraseña:</label>
+                  <input type="password" placeholder="Ingrese una contraseña" name="contraseña" id="contraseña">
+                </div>
+                <div class="field required">
+                    <label for="">Repetir Contraseña:</label>
+                    <input type="password" placeholder="Repita la contraseña" name="repetir" id="repetir">
+                </div>
+              </div>
+              <div class="two fields">
+                <div class="field">
+                  <input id="administrador" type="radio" name="tipo" value="administrador">
+                  <label>Adminstrador</label>
+                </div>
+                <div class="field">
+                  <input id="comun" type="radio" name="tipo" value="comun" checked>
+                  <label for="">Usuario común</label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="actions">
+      <div class="ui negative right labeled icon button"><i class="icon cancel"></i>Cancelar</div>
+      <div id="btnGuardar" class="ui green right labeled icon button"><i class="icon check"></i>Guardar</div>
+    </div>
+  </div>
+  <section style="margin-bottom:1em" class="ui container seccion1">
+    <table class="ui center aligned unstackable table" id="tabla">
+      <thead>
+        <tr>
+          <th>Imagen de Peril</th>
+          <th>Nombre</th>
+          <th>Apellido Paterno</th>
+          <th>Apellido Materno</th>
+          <th>Correo</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+      </tbody>
+    </table>
+  </section>
+  <div class="ui basic modal">
+    <div class="ui icon header">
+      <i class="exclamation yellow icon"></i>
+      <p id="borrado">¿Seguro que desea borrar este regitro?</p>
+    </div>
+    <div class="content" id="mensaje2">No se podra volver a recuperar tal dato</div>
+    <div class="actions">
+      <div class="ui red basic cancel inverted button">
+        <i class="remove icon"></i>
+        No
+      </div>
+      <div id="btnBorrar" class="ui green ok inverted button">
+        <i class="checkmark icon"></i>
+        Si
+      </div>
+    </div>
+  </div>
+  <div class="ui modal" id="cambiarContraseña">
+    <i class="close icon"></i>
+    <div class="header">Recuperar Contraseña</div>
+    <div class="content">
+      <div class="ui red compact message">Los campos marcados con *(asterisco) son obligatorios</div>
+      <form action="" class="ui form" id="formularioCambiar">
+        <div class="field required">
+          <label for="">Ingrese su actual contraseña</label>
+          <input name="actual" id="actual" type="password" placeholder="Ingrese su actual contraseña">
+        </div>
+        <div class="field required">
+          <label  for="">Ingrese la nueva contraseña</label>
+          <input name="nueva" id="nueva" type="password" placeholder="Ingrese la nueva contraseña">
+        </div>
+        <div class="field required">
+          <label for="">Repita la nueva contraseña</label>
+          <input name="nuevaRepetir" id="nuevaRepetir" type="password" placeholder="Repita la nueva contraseña">
+        </div>
+      </form>
+    </div>
+    <div class="actions">
+      <div class="ui negative right labeled icon button"><i class="icon cancel"></i>Cancelar</div>
+      <div  id="btnCambiarContraseña" class="ui green right labeled icon button"><i class="icon check"></i>Guardar cambios</div>
+    </div>
+  </div>
+  </body>
+</html>
