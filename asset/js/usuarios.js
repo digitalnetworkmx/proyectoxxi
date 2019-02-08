@@ -33,10 +33,6 @@ var Usuarios =  function() {
   }
 
   var initDependencias=function(){
-    // localStorage.setItem("nombre","Mario");
-    // localStorage.setItem("correo","mario@gmail.com");
-    // localStorage.setItem("tipo","administrador");
-    // localStorage.setItem("imagen","https://www.ngenespanol.com/wp-content/uploads/2018/08/La-primera-imagen-de-la-historia.jpg");
     var nombre=localStorage.getItem("nombre");
     var correo=localStorage.getItem("correo");
     var administrador =localStorage.getItem("tipo");
@@ -44,7 +40,7 @@ var Usuarios =  function() {
     if(nombre==""){
       window.location.href="login.html";
     }
-    if(administrador!="administrador"){
+    if(administrador=="comun"){
       $(".vistaAdministrador").hide();
     }
     $("#ingresado").css("background-image","url("+imagen+")");
