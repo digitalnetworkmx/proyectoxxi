@@ -185,7 +185,7 @@ var initTabla = function() {
         tabla+="<td>"+accion+"</td></tr>";
       }
     });
-    $("#tabla tbody").html(tabla);
+    $("#Equipostabla tbody").html(tabla);
     $('.ui.dropdown').dropdown();
   });
 }
