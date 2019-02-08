@@ -92,6 +92,7 @@ var verificar = function(){
       console.log(localStorage.getItem("imagen"));
       console.log(localStorage.getItem("tipo"));
 
+      window.location.href="/proyectoxxi/pronostico.html";
     }
   });
 }
