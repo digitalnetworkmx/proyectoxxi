@@ -67,7 +67,7 @@ var Partidos = new function(){
   var initBotonRegresar = function(){
     $("#btnRegresar").click(function(){
       $("#pantallaP").hide();
-      $("#tabla").show();
+      $("#tablaJornada").show();
     });
   }
 
@@ -212,7 +212,7 @@ var Partidos = new function(){
          alerta(false, "El registro se borro con éxito",3000);
 
          $("#pantallaP").hide();
-         $("#tabla").show();
+         $("#tablaJornada").show();
        }
       }).modal('show');
     });
@@ -395,7 +395,7 @@ var Partidos = new function(){
         });
         cerrarModal();
         $("#pantallaP").hide();
-        $("#tabla").show();
+        $("#tablaJornada").show();
       }
     }).submit(function(e){
       e.preventDefault();
