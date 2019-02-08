@@ -13,8 +13,6 @@ var Partidos = new function(){
     initBotonEditar();
     initBotonEditarPartidos();
     initTabla();
-    cerrarSesion();
-    initDependencias();
     initDropdown();
     minimo_maximoFecha();
     firebase.database().ref("jornadas/").orderByChild("nombreJornada").on("value", function(snapshot){
@@ -108,13 +106,14 @@ var Partidos = new function(){
       firebase.database().ref("partidos/").orderByChild("fecha").on('value', function(snapshot) {
         $.each(snapshot.val(), function( index, value ) {
           if(index==data.key){
+            $("#fechapartido").val(value.fecha);
+            $("#horapartido").val(value.hora);
             createdEPar=value.created_at;
             indiceJ_P=value.key_Jornada;
           }
         });
       });
       minimo_maximoFechaPartido(indiceJ_P);
-      limpiar();
       $("#modalRegistrarPartidos").modal({
         closable:false,
         autofocus:false
@@ -496,36 +495,7 @@ var Partidos = new function(){
       $("#dropdownCV").siblings('.menu').html('<div class="item" data-value="">Selecciona un club</div>'+opciones);
       $("#dropdownCL").siblings('.menu').html('<div class="item" data-value="">Selecciona un club</div>'+opciones);
     });
-    $('.ui.dropdown').dropdown();
   }
-
-
-  function cerrarSesion(){
-   localStorage.setItem("nombre","");
-   localStorage.setItem("correo","");
-   localStorage.setItem("tipo","");
-   localStorage.setItem("imagen","");
-   window.location.href="login.html";
- }
-
-  var initDependencias=function(){
-   // localStorage.setItem("nombre","Mario");
-   // localStorage.setItem("correo","mario@gmail.com");
-   // localStorage.setItem("tipo","administrador");
-   // localStorage.setItem("imagen","https://www.ngenespanol.com/wp-content/uploads/2018/08/La-primera-imagen-de-la-historia.jpg");
-   var nombre=localStorage.getItem("nombre");
-   var correo=localStorage.getItem("correo");
-   var administrador =localStorage.getItem("tipo");
-   var imagen = localStorage.getItem("imagen");
-   if(nombre==""){
-     window.location.href="login.html";
-   }
-   if(administrador!="administrador"){
-     $(".vistaAdministrador").hide();
-   }
-   $("#ingresado").css("background-image","url("+imagen+")");
-   $("#nombreUsuario").html(nombre);
- }
 
   return{
     init: init,
