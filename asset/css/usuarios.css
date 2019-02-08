@@ -1,0 +1,36 @@
+.cabecera{
+  margin-bottom:5em;
+}
+#imagen{
+  height: 300px;
+  width: 350px;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  margin:auto;
+  background-image:url(
+http://semantic-ui.com/images/wireframe/image.png);
+}
+#navegacion .container div{
+  color:white;
+}
+.imagen{
+  width:3.2em;
+  height:3.2em;
+  border-radius: 50%;
+  background-size:contain;
+  background-position: center;
+  margin:auto;
+}
+#ingresado{
+  width:50px;
+  height:50px;
+  background-position: center;
+  background-size:contain;
+  border-radius:50%;
+  background-repeat:no-repeat;
+  background-image:url(http://semantic-ui.com/images/wireframe/image.png);
+}
+header{
+  margin-top:7em;
+}
