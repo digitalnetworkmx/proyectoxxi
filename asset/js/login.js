@@ -2,6 +2,9 @@ var correo;
 var password;
 var bien;
 
+// if (firebase.auth().currentUser) {
+//   window.location.href="/proyectoxxi/pronostico.html";
+// }
 
 
 $('#iniciar').on('click',function(){
@@ -77,14 +80,15 @@ var verificar = function(){
         email = user.email;
         imagen = user.photoURL;
         tipo = user.isAnonymous;
-        // console.log(tipo);
+
 
         // if (name=="admin2") {
         //   tipo=true;
         // }else{
         //   tipo=false;
         // }
-
+        //
+        // console.log(tipo);
 
         if (tipo==false) {
           tipo="comun";
@@ -104,16 +108,13 @@ var verificar = function(){
       console.log(localStorage.getItem("imagen"));
       console.log(localStorage.getItem("tipo"));
 
+//       $(document).ready(function(){
+//   setTimeout(function(){
+//     if (firebase.auth().currentUser) {
+//     window.location.href="/proyectoxxi/pronostico.html";
+//   }
+// }, 3000);
 
     }
   });
 }
-$(document).ready(function(){
-  setTimeout(function(){
-    if (firebase.auth().currentUser) {
-    window.location.href="/proyectoxxi/pronostico.html";
-  }
-}, 3000);
-
-});
-
