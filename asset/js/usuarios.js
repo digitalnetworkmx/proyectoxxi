@@ -345,7 +345,7 @@ var Usuarios =  function() {
       $("#modal").modal("hide");
       var tipo = $("input:radio[name=tipo]:checked").val();
       var type=false;
-      if(tipo == "administrador"){
+      if(tipo != "comun"){
         type=true;
       }else{
         type=false;
