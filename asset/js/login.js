@@ -109,8 +109,11 @@ var verificar = function(){
   });
 }
 $(document).ready(function(){
-  if (firebase.auth().currentUser) {
-  window.location.href="/proyectoxxi/pronostico.html";
-}
+  setTimeout(function(){
+    if (firebase.auth().currentUser) {
+    window.location.href="/proyectoxxi/pronostico.html";
+  }
+}, 3000);
+
 });
 
