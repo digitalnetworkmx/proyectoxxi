@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <!-- https://github.com/requenahdz/firebase -->
+    <link rel="stylesheet" type="text/css" href="Semantic/semantic.min.css">
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<link href="https://getbootstrap.com/docs/3.3/dist/css/bootstrap.min.css" rel=stylesheet>
+<link href="https://fonts.googleapis.com/css?family=Major+Mono+Display|Shadows+Into+Light" rel="stylesheet">
+    <script type="text/javascript" src="Tabla.js"></script>
+    <link rel="stylesheet" href="Tabla.css">
+  </head>
+  <body>
+
+
+    <div class="ui container">
+      <nav class="ui fixed menu inverted" id="navegacion">
+ <div class="ui container">
+   <a href="#" class="header item">
+     Proyecto XXI</a>
+   <a href="#"class="Inicio item">Inicio</a>
+   <a href="#" class="vistaAdministrador item">Clubs</a>
+   <a href="#" class="item">Jornadas</a>
+   <a href="#" class="item">Resultados</a>
+   <a href="#" class="item">Posiciones</a>
+   <div class="usuario item right aligned">
+     <div class="ui pointing dropdown link item">
+       <span id="nombreUsuario" class="text">Tu nombre</span>
+       <i class="dropdown icon"></i>
+       <div class="menu">
+         <div id="cerrarSesion" class="item">
+           Cerrar Sesión
+         </div>
+       </div>
+     </div>
+     <div class="imagen" id="ingresado"></div>
+   </div>
+ </div>
+</nav>
+      <p><br><br><br><br><br></p>
+
+      <table id ="tabla" class="ui celled table">
+  <thead>
+    <tr class="center aligned">
+    <th>Local</th>
+    <th>Empate</th>
+    <th>Visitante</th>
+
+  </tr>
+</thead>
+  <tbody>
+
+
+  </tbody>
+</table>
+
+
+<p><br></p>
+<div class="ui grid">
+  <div class="four wide column"></div>
+  <div class="four wide column"></div>
+  <div class="four wide column"></div>
+  <div class="four wide column"><button id="guardar"class="ui labeled icon button blue"><i class="save icon"></i>Guardar</button></div>
+</div>
+
+    </div>
+    <script
+      src="https://code.jquery.com/jquery-3.1.1.min.js"
+      integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+      crossorigin="anonymous"></script>
+    <script src="Semantic/semantic.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.8.1/firebase.js"></script>
+    <script src="https://requenahdz.github.io/firebase/js/firebase.js"></script>
+  </body>
+</html>
