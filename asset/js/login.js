@@ -2,13 +2,17 @@ var correo;
 var password;
 var bien;
 
+if (firebase.auth().currentUser) {
+  window.location.href="/proyectoxxi/pronostico.html";
+}
+
 $('#iniciar').on('click',function(){
 
-  firebase.auth().signOut().then(function() {
-    // console.log("salio correctamente");
-  }).catch(function(error) {
-    // console.log("Fallo al cerrar"+error);
-  });
+  // firebase.auth().signOut().then(function() {
+  //   // console.log("salio correctamente");
+  // }).catch(function(error) {
+  //   // console.log("Fallo al cerrar"+error);
+  // });
 
   correo=$('#correo').val();
   password=$('#contraseña').val();
@@ -75,12 +79,22 @@ var verificar = function(){
         email = user.email;
         imagen = user.photoURL;
         tipo = user.isAnonymous;
+        // console.log(tipo);
+
+        // if (name=="admin2") {
+        //   tipo=true;
+        // }else{
+        //   tipo=false;
+        // }
+
+
         if (tipo==false) {
           tipo="comun";
         }else{
           tipo="administrador";
         }
       }
+
 
       localStorage.setItem("nombre",name);
       localStorage.setItem("correo",email)
@@ -92,7 +106,7 @@ var verificar = function(){
       console.log(localStorage.getItem("imagen"));
       console.log(localStorage.getItem("tipo"));
 
-      window.location.href="/proyectoxxi/pronostico.html";
+
     }
   });
 }
