@@ -30,7 +30,6 @@ var Usuarios =  function() {
     localStorage.setItem("tipo","");
     localStorage.setItem("imagen","");
     window.location.href="login.html";
-    alert("se cerro sesion");
   }
 
   var initDependencias=function(){
