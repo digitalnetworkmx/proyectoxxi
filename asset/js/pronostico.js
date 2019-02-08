@@ -72,13 +72,11 @@ firebase.database().ref("partidos/").orderByChild("fecha").on('value', function(
          var ahh="<input type='radio' name='grupo"+nombre+"'/>";
          // ahh+="</form>";
 
-         tabla+="<fieldset id='grupo"+nombre+"'>"+
-           "<tr class='center aligned'>"+
+         tabla+="<tr class='center aligned' id='grupo"+nombre+"' >"+
               "<td>"+logolocal+local.nombre+"<br><br>"+local.descripcion+"<br><br>"+ahh+"</td>"+
               "<td><br><br><br><br>"+ahh+"</td>"+
               "<td>"+logoVisitante+visitante.nombre+"<br><br>"+visitante.descripcion+"<br><br>"+ahh+"</td>"+
-            "</tr>"+
-          "</fieldset>";
+            "</tr>";
 
          // console.log(value);
 
@@ -107,7 +105,7 @@ var aceptar=false;
 for(var i=1; i<=conta; i++){
   if($('input:radio[name=grupo'+i+']').is(":checked")){
     can+=1;
-    
+
     // console.log("marcados"+can);
   }
   // console.log("marcados"+can);
