@@ -149,8 +149,8 @@ var Partidos = new function(){
          });
 
          firebase.database().ref("partidos/").orderByChild("fecha").on('value', function(snapshot) {
-           console.log(snapshot.val();
-         }
+           console.log(snapshot.val());
+         });
          alerta(false, "El registro se borro con éxito",3000);
        }
       }).modal('show');
