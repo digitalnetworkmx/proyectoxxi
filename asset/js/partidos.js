@@ -106,6 +106,7 @@ var Partidos = new function(){
       firebase.database().ref("partidos/").orderByChild("fecha").on('value', function(snapshot) {
         $.each(snapshot.val(), function( index, value ) {
           if(index==data.key){
+
             $("#fechapartido").val(value.fecha);
             $("#horapartido").val(value.hora);
             createdEPar=value.created_at;
@@ -118,6 +119,38 @@ var Partidos = new function(){
         closable:false,
         autofocus:false
       }).modal("show");
+    });
+  }
+
+  var initBotonEliminarPartidos = function(){
+    $(document).on("click", ".btnEliminarPar", function(){
+      var data = $(this).data(),updated,created;
+      $('#modalBorrar').modal({
+       closable:false,
+       onApprove : function() {
+         var f = new Date();
+         f = f.getFullYear() + "-" + (f.getMonth()+1) + "-" + f.getDate();
+         firebase.database().ref("partidos/").orderByChild("fecha").on('value', function(snapshot) {
+           $.each(snapshot.val(), function( index, value ) {
+             if(index==data.key){
+               created=value.created_at;
+               updated=value.updated_at;
+             }
+           });
+         });
+
+         firebase.database().ref("partidas/"+data.key+"/").set({
+           activo:0,
+           created_at: created,
+           updated_at: updated,
+           deleted_at:f
+         });
+         alerta(false, "El registro se borro con éxito",3000);
+
+         /*$("#pantallaP").hide();
+         $("#tablaJornada").show();*/
+       }
+      }).modal('show');
     });
   }
 
