@@ -8,12 +8,12 @@ var Equipos = new function() {
     initTabla();
     initBotonEliminar();
     logo();
-    initDependencias();
+
     Cancelar();
     Cerrar();
     click();
-    initDropdown();
-    cerrarSesion();
+
+
   }
 
 
@@ -40,37 +40,6 @@ var Equipos = new function() {
       //mas campos
     });
   }
-
-  function cerrarSesion(){
-    localStorage.setItem("nombre","");
-    localStorage.setItem("correo","");
-    localStorage.setItem("tipo","");
-    localStorage.setItem("imagen","");
-    window.location.href="login.html";
-  }
-
-  var initDependencias=function(){
-    // localStorage.setItem("nombre","Mario");
-    // localStorage.setItem("correo","mario@gmail.com");
-    // localStorage.setItem("tipo","administrador");
-    // localStorage.setItem("imagen","https://www.ngenespanol.com/wp-content/uploads/2018/08/La-primera-imagen-de-la-historia.jpg");
-    var nombre=localStorage.getItem("nombre");
-    var correo=localStorage.getItem("correo");
-    var administrador =localStorage.getItem("tipo");
-    var imagen = localStorage.getItem("imagen");
-    if(nombre==""){
-      window.location.href="login.html";
-    }
-    if(administrador!="administrador"){
-      $(".vistaAdministrador").hide();
-    }
-    $("#ingresado").css("background-image","url("+imagen+")");
-    $("#nombreUsuario").html(nombre);
-  }
-  var initDropdown = function(){
-    $('.ui.dropdown').dropdown();
-  }
-
 
 
   var initBotonNuevo = function() {
