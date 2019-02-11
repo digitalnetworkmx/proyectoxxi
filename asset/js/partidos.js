@@ -17,18 +17,9 @@ var Partidos = new function(){
     initDropdown();
     minimo_maximoFecha();
     firebase.database().ref("jornadas/").orderByChild("nombreJornada").on("value", function(snapshot){
-      /*var f = new Date();
-      f = f.getFullYear() + "-" + (f.getMonth()+1) + "-" + f.getDate();
-      $.each(snapshot.val(), function(index, value){
-        if(value.hora=="16:55"){
-          firebase.database().ref("partidos/"+index+"/").set({
-            activo:0,
-            created_at: f,
-            updated_at: f,
-            deleted_at:f
-          });
-        }
-      });*/
+      console.log(snapshot.val());
+    });
+    firebase.database().ref("partidos/").orderByChild("fecha").on('value', function(snapshot) {
       console.log(snapshot.val());
     });
   }
