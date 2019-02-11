@@ -51,12 +51,12 @@ var Equipos = new function() {
 
   var initGuardarPersona = function() {
     $('#btnGuardar').click(function() {
-      $('#form').submit();
+      $('#Equiposform').submit();
     });
   }
 
   var initForm = function() {
-    $('#form').form({
+    $('#Equiposform').form({
       inline: true,
       fields: {
         nombre: {
@@ -100,7 +100,7 @@ var Equipos = new function() {
   onSuccess: function(event, fields) {
     event.preventDefault();
     cerrarmodal();
-    setTimeout(function(){ $('#form')[0].reset() }, 1000);
+    setTimeout(function(){ $('#Equiposform')[0].reset() }, 1000);
     var fecha=new Date();
     var fechas= fecha.getDate() + "/" + (fecha.getMonth() +1) + "/" + fecha.getFullYear();
     if ($('#modal').data('accion') == 'nuevo') {
@@ -220,13 +220,13 @@ function borrar (componente) {
 
   function Cancelar() {
     $(document).on('click','#btnCancelar',function () {
-      setTimeout(function(){ $('#form')[0].reset() }, 1000);
+      setTimeout(function(){ $('#Equiposform')[0].reset() }, 1000);
     });
   }
 
   function Cerrar() {
     $(document).on('click','#cerrar',function () {
-      setTimeout(function(){ $('#form')[0].reset() }, 1000);
+      setTimeout(function(){ $('#Equiposform')[0].reset() }, 1000);
     });
   }
 
