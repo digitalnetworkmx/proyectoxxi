@@ -465,7 +465,6 @@ var Partidos = new function(){
 
     $("#partidos #footPartidosT").show();
     firebase.database().ref("partidos/").orderByChild("fecha").on("value", function(snapshot){
-      alert("lol");
       var vacio=0,tablaPartidos="";
       //console.log(snapshot.val());
       $.each(snapshot.val(), function(index, value){
