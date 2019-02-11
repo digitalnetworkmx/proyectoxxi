@@ -92,7 +92,7 @@ var Partidos = new function(){
 
   var initBotonEditarPartidos = function(){
     $(document).on("click",".btnEditarPar", function(){
-      $('#modalNew').data('accion', 'editar');
+      $('#modalRegistrarPartidos').data('accion', 'editar');
       var data = $(this).data();
       keyPar = data.key;
       firebase.database().ref("partidos/").orderByChild("fecha").on('value', function(snapshot) {
