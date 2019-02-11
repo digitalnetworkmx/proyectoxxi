@@ -271,6 +271,6 @@ function borrar (componente) {
     });
   }
 
-  $(document).ready(function() {
+  $(document).ready(function($) {
     Equipos.init();
   });
