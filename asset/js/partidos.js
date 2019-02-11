@@ -147,13 +147,11 @@ var Partidos = new function(){
            updated_at: updated,
            deleted_at:f
          });
-         
+
          firebase.database().ref("partidos/").orderByChild("fecha").on('value', function(snapshot) {
-           console.log(snapshot.val());
+           console.log(snapshot.val();
          }
          alerta(false, "El registro se borro con éxito",3000);
-         /*$("#pantallaP").hide();
-         $("#tablaJornada").show();*/
        }
       }).modal('show');
     });
