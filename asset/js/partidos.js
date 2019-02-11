@@ -140,7 +140,7 @@ var Partidos = new function(){
            });
          });
 
-         firebase.database().ref("partidas/"+data.key+"/").set({
+         firebase.database().ref("partidos/"+data.key+"/").set({
            activo:0,
            created_at: created,
            updated_at: updated,
