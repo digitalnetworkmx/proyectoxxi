@@ -11,6 +11,7 @@ var Partidos = new function(){
     initBotonVerPartidos();
     initBotonEliminar();
     initBotonEditar();
+    initBotonEliminarPartidos();
     initBotonEditarPartidos();
     initTabla();
     initDropdown();
