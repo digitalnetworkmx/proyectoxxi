@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <title>Equipos</title>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.8.1/firebase.js"></script>
+  <script src="asset/iziToast/iziToast.min.js"></script>
+  <script src="asset/iziToast/init.js"></script>
+  <script src="asset/firebase/init.js"></script>
+  <script src="asset/js/equipos.js"></script>
+  <script src="asset/js/usuarios.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
+  <link rel="stylesheet" href="asset/iziToast/iziToast.min.css">
+  <link rel="stylesheet" href="asset/css/equipos.css">
+</head>
+<body>
+  <nav class="ui fixed menu inverted" id="navegacion">
+    <div class="ui container">
+      <a href="#" class="header item">
+        Proyecto XXI</a>
+        <a href="#"class="Inicio item">Inicio</a>
+        <a href="#" class="vistaAdministrador item">Clubs</a>
+        <a href="#" class="item">Jornadas</a>
+        <a href="#" class="item">Resultados</a>
+        <a href="#" class="item">Posiciones</a>
+        <div class="usuario item right aligned">
+          <div class="ui pointing dropdown link item">
+            <span id="nombreUsuario" class="text">Tu nombre</span>
+            <i class="dropdown icon"></i>
+            <div class="menu">
+              <div id="cerrarSesion" class="item">
+                Cerrar Sesion
+              </div>
+            </div>
+          </div>
+          <div class="imagen" id="ingresado"></div>
+        </div>
+      </div>
+    </nav>
+    <br><br><br>
+    <div class="ui container">
+      <br>
+      <h3>Equipos</h3>
+      <div class="ui breadcrump">
+        <a class="section" href="#">Inicio</a>
+        <i class="right angle icon divider"></i>
+        <div class="active section">Equipos</div>
+      </div>
+      <br>
+      <button type="button" class="ui right floated labeled icon button blue" id="añadir" >
+        <i class="plus icon"></i>
+        Nuevo
+      </button>
+      <br><br><br>
+      <table class="ui aligned centered center unstackable table" id="Equipostabla">
+        <thead>
+          <tr><th>Logo</th>
+            <th>Nombre</th>
+            <th>Descripción</th>
+            <th>Acciones</th>
+          </tr></thead>
+          <tbody>
+          </tbody>
+        </table>
+        <div class="ui modal" id="modal">
+          <i class="close icon" id="cerrar"></i>
+          <div class="header">
+            Equipo Nuevo
+          </div>
+          <div class="image content">
+            <div class="ui medium image">
+              <div class="imagen" name="imagen" id="imagen" ></div><br>
+              <input type="file" name="file" id="file" class="file" data-url="null">
+            </div>
+            <div class="description">
+              <div class="ui fluid compact message red">
+                <p>Los campos marcados con * son obligatorios</p>
+              </div>
+              <br>
+              <form class="ui fluid form" id="form">
+                <div class="field">
+                  <input type="hidden" name="key" value="0" id="key">
+                </div>
+                <div class="field required">
+                  <label>Nombre</label>
+                  <div class="ui input">
+                    <input type="text" name="nombre" placeholder="Escriba el nombre del equipo" id="nombre">
+                  </div>
+                </div>
+                <div class="ui form">
+                  <div class="field required">
+                    <label>Descripción</label>
+                    <textarea rows="2" name="descripcion" id="descripcion"></textarea>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+          <div class="actions">
+            <div class="ui left labeled icon red deny button" id="btnCancelar">
+              <i class="close icon"></i>
+              Cancelar
+            </div>
+            <div class="ui right labeled icon button green" id="btnGuardar">
+              Guardar
+              <i class="save icon"></i>
+            </div>
+          </div>
+        </div>
+        <div class="ui basic modal" id="modaleliminar">
+          <div class="ui icon header">
+            <i class="exclamation icon" id="iconoborrar"></i>
+            <p id="EliminarRegistro">¿Estás seguro de Eliminar este registro?</p>
+          </div>
+          <div class="content" id="texto">
+            <p id="mensaje">Sí lo eliminas el registro se perderá completamente</p>
+          </div>
+          <div class="actions">
+            <div class="ui red basic cancel inverted button">
+              <i class="remove icon"></i>
+              No
+            </div>
+            <div class="ui green ok inverted button" id="botonEliminar">
+              <i class="checkmark icon"></i>
+              Sí
+            </div>
+          </div>
+        </div>
+      </body>
+      </html>
