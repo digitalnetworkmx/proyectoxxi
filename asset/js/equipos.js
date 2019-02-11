@@ -8,12 +8,9 @@ var Equipos = new function() {
     initTabla();
     initBotonEliminar();
     logo();
-
     Cancelar();
     Cerrar();
     click();
-
-
   }
 
 
@@ -154,7 +151,7 @@ var initTabla = function() {
         tabla+="<td>"+accion+"</td></tr>";
       }
     });
-    $("#tabla tbody").html(tabla);
+    $("#Equipostabla tbody").html(tabla);
     $('.ui.dropdown').dropdown();
   });
 }
