@@ -70,7 +70,7 @@ var verificar = function(){
   firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
       // console.log("bien");
-      alerta(true,"Inicio sesion correctamente");
+      // alerta(true,"Inicio sesion correctamente");
 
       var user = firebase.auth().currentUser;
       var name, email, imagen, tipo;
@@ -108,7 +108,7 @@ var verificar = function(){
       console.log(localStorage.getItem("imagen"));
       console.log(localStorage.getItem("tipo"));
 
-
+      // alert("rediriguio");
       window.location.href="/proyectoxxi/pronostico.html";
 
 //       $(document).ready(function(){
