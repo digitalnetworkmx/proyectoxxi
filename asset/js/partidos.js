@@ -388,9 +388,10 @@ var Partidos = new function(){
           });
           alerta(true,"Éxito al editar un partido de la jornada",3000);
         }
-
         firebase.database().ref("partidos/").orderByChild("fecha").on("value", function(snapshot){
-          console.log(snapshot.val());
+          $.each(snapshot.val(),function(index, value){
+            console.log(index+" y "+value);
+          });
         });
         cerrarModal();
         $("#pantallaP").hide();
@@ -435,6 +436,7 @@ var Partidos = new function(){
 
     $("#partidos #footPartidosT").show();
     firebase.database().ref("partidos/").orderByChild("fecha").on("value", function(snapshot){
+      alert("lol");
       var vacio=0,tablaPartidos="";
       //console.log(snapshot.val());
       $.each(snapshot.val(), function(index, value){
