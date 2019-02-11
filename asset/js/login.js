@@ -108,8 +108,8 @@ var verificar = function(){
       console.log(localStorage.getItem("imagen"));
       console.log(localStorage.getItem("tipo"));
 
-      alert("te rediriguio");
-      // window.location.href="/proyectoxxi/pronostico.html";
+
+      window.location.href="/proyectoxxi/pronostico.html";
 
 //       $(document).ready(function(){
 //   setTimeout(function(){
