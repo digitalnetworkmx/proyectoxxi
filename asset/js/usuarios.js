@@ -264,6 +264,14 @@ var Usuarios =  function() {
     });
   }
 
+  function formatear(cadena){
+    while(cadena.includes("<") || cadena.includes(">")){
+      cadena = cadena.replace("<","&lt;");
+      cadena=cadena.replace(">","&gt;");
+    }
+    return cadena;
+  }
+
   var initForm = function() {
     $('#form').form({
       inline: true,
@@ -351,6 +359,10 @@ var Usuarios =  function() {
         type=false;
       }
       var date = new Date();
+      fields.nombre = formatear(fields.nombre);
+      fields.email = formatear(fields.email);
+      fields.paterno = formatear(fields.paterno);
+      fields.materno = formatear(fields.materno);
       var fecha = date.getDate()+"/"+(date.getMonth()+1)+"/"+date.getFullYear();
       if ($('#modal').data('accion') == 'nuevo') {
         firebase.auth().createUserWithEmailAndPassword(fields.email, fields.contraseña).then(function(){
