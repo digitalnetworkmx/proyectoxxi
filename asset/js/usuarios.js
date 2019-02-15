@@ -5,14 +5,13 @@ var Usuarios =  function() {
   var imagen="http://semantic-ui.com/images/wireframe/image.png";
 
   var init = function() {
-    cargarMenu();
     initForm();
     initGuardarPersona();
     initBotonEditar();
     initBotonNuevo();
-    initDependencias();
     initTabla();
     initBorrar();
+    initDependencias();
     initBtnCerrarSesion();
     initCambiar();
     initDropdown();
@@ -31,19 +30,6 @@ var Usuarios =  function() {
     localStorage.setItem("tipo","");
     localStorage.setItem("imagen","");
     window.location.href="login.html";
-  }
-
-  function cargarMenu(){
-    $.ajax({
-      url:"/proyectoxxi/menu.html",
-      type:"GET",
-      data:{},
-    }).done(function(res){
-      $("#nav").html(res);
-    }).fail(function(e){
-      console.log("no se pudo");
-    });
-    $(".ui.dropdown").dropdown();
   }
 
   var initDependencias=function(){
@@ -457,6 +443,22 @@ return {
 }
 }();
 
+function cargarMenu(){
+  $.ajax({
+    url:"/proyectoxxi/menu.html",
+    type:"GET",
+    data:{},
+  }).done(function(res){
+    $("#nav").html(res);
+  }).fail(function(e){
+    console.log("no se pudo");
+  });
+  $(".ui.dropdown").dropdown();
+}
+
 $(document).ready(function($) {
-  Usuarios.init();
+  cargarMenu();
+  setTimeout(function(){
+    Usuarios.init();
+  },1000);
 });
