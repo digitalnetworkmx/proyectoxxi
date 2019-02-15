@@ -43,6 +43,7 @@ var Usuarios =  function() {
     }).fail(function(e){
       console.log("no se pudo");
     });
+    $(".ui.dropdown").dropdown();
   }
 
   var initDependencias=function(){
