@@ -5,6 +5,7 @@ var Usuarios =  function() {
   var imagen="http://semantic-ui.com/images/wireframe/image.png";
 
   var init = function() {
+    cargarMenu();
     initForm();
     initGuardarPersona();
     initBotonEditar();
@@ -30,6 +31,18 @@ var Usuarios =  function() {
     localStorage.setItem("tipo","");
     localStorage.setItem("imagen","");
     window.location.href="login.html";
+  }
+
+  function cargarMenu(){
+    $.ajax({
+      url:"/proyectoxxi/menu.html",
+      type:"GET",
+      data:{},
+    }).done(function(res){
+      $("#nav").html(res);
+    }).fail(function(e){
+      console.log("no se pudo");
+    });
   }
 
   var initDependencias=function(){
